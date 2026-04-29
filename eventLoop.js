@@ -120,9 +120,187 @@
 // const newArr = arr.flat(2)
 // console.log(newArr)
 
-let arr = [2,5,1]
+// let arr = [2,5,1,]
 
 // const newArr = arr.flatMap(e=> [e, e+1])
 // console.log(newArr)
-const newArr = arr.sort((a,b)=> a+b)
-console.log(newArr)
+// const newArr = arr.sort((a,b)=> a-b) //Ascending order
+// arr.sort((a,b)=> b - a)
+// arr.reverse()
+
+// let arr1 = [...arr, 4] //spreadoperator
+// console.log(arr1) //original array got mutated
+
+// const[x, m ,y, z= 0] = arr //array destructuring + default values
+// console.log(x,y, z)
+
+// console.log(Array.from("abc"))
+
+// console.log(Array.from({length: 5}, (_,i)=> i))
+
+// console.log(Array.isArray("abc")) //isArray checks if its a array or not
+
+// const user = {
+//     name: "Anant",
+//     age: 20,
+    // greet: ()=>{
+    //     console.log(this.name) //arrow function do not have their own this, so it will be undefined
+
+    // }
+    // greet(){
+    //     console.log(this.name)   //this will work because normal function have their own this
+//     }
+// }
+
+// const key = "age"
+ 
+//CRUD operation on object
+
+//Read
+// console.log(user.name)  //direct access
+// console.log(user[key]) //dynamic access
+
+// user.city = "Delhi" //add
+// user.age = 23 //update
+// delete user.city //delete
+
+// console.log(user.greet())
+
+//this keyword context
+// let a = 23 //let and const variable do not become properties of global object only var
+// var a = 23
+
+// function thisKeyword(){
+//     console.log(this.a)
+// }
+
+// thisKeyword()
+
+// function func(name){
+//     this.name = name
+
+// }
+// const cons = new func("anant")  //this points to new object in constructor function
+// console.log(cons)
+
+//destructuring
+// const {name : username, age } = user
+// console.log(username, age)
+
+//nested destructuring
+// const user = {
+//    city: "Delhi" 
+// };
+
+// const {address: {city} } = user
+// console.log(city)
+
+// const updated = {...user, city: "mumbai"}
+// console.log(updated)
+
+// const obj = user //this is a reference not a copy
+// const user = { name: "Anant", age: 22 };
+// const ren = { same: "Vikram", kage: 35 }; //keys should be diffrent for assign to merge
+
+// console.log(Object.keys(user))
+// console.log(Object.values(user))
+// console.log(Object.entries(user))
+
+// Object.entries(user).forEach(([key, value])=>{
+//     console.log(key, value)
+// })
+
+// Object.freeze(user)   //now object will freeze this makes object immutable
+// user.name = "Vikram"
+// console.log(user.name)
+
+
+// console.log(Object.assign(user, ren))
+// const copy = Object.assign({}, user)
+// console.log(copy)
+// const user = {
+//   name: "A",
+//   address: { city: "Delhi" }
+// };
+
+// const newUser = {...user}  //shallow copy 
+// const newUser = JSON.parse(JSON.stringify(user)) //deep copy
+// newUser.address.city = "Noida"  //changes original too, because it is referencing same object
+//  console.log(user)
+
+// for(let key in user){
+//     console.log(key, user[key])
+// }
+
+// const users = [
+//   { name: "A", age: 20 },
+//   { name: "B", age: 30 }
+// ];
+
+// const result = users.reduce((acc, curr)=>{
+//     acc[curr.name] = curr.age
+//     return acc
+// },{})
+
+// console.log(result)
+
+//String
+
+// let user= "Java Script"
+// console.log(user.slice(-6))
+// console.log(user.split(" "))
+// user.trim()
+// console.log("he llo".trim())   //trim  will only remove leading and trailing spaces
+
+// let user= "hello hello"
+// console.log(user.replace("hello", "hii"))
+// console.log(user.replaceAll("hello", "hii"))
+// console.log(user.replace(/hello/g, "hii"))  //with regex replace can work like replace all
+
+// let user= "JavaScript"
+// console.log(user.includes("Java"))
+// console.log(user.startsWith("Java"))
+// console.log(user.endsWith("Script"))
+
+// console.log("5".padStart(3, "0"))
+// console.log("5".padEnd(3, "0"))
+// console.log("ha".repeat(4))
+// console.log(`hello ${2+2}`)
+
+// const user = String.raw`Hello\nWorld`
+// console.log(user)
+
+// let user= "JavaScript"
+// console.log(user[-1]) //don't support negative index
+// console.log(user.at(-1))
+
+// let user= "madam"
+// const isPalindrome = user === user.split("").reverse().join("")
+// console.log(user.split("").reverse().join(""))
+// console.log(isPalindrome)
+
+//count characters
+
+// const chars = user.split("").reduce((acc, char)=>{
+//     acc[char] = (acc[char] || 0) + 1;
+//     return acc
+// }, {})
+
+// console.log(chars)
+
+// let arr = [1, 2, 3]
+// console.log(arr.at(-1))
+
+console.log(document.querySelector(".this").innerText)
+
+
+
+
+
+
+
+
+
+
+
+
