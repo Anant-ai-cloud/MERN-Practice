@@ -291,7 +291,51 @@
 // let arr = [1, 2, 3]
 // console.log(arr.at(-1))
 
-console.log(document.querySelector(".this").innerText)
+// console.log(document.querySelector(".this").innerText)
+
+// try{
+    
+    // throw "Something went wrong"    //bad practice
+    // throw new Error("Something went wrong")
+
+// }catch(error){
+// console.log(error)  //error is object in itself
+// }
+
+class ValidationError extends Error {
+    constructor(message){
+        super(message)
+        this.name = message  //give specific name to Error because bydefault every error in javaScript have same name Error
+    }
+}
+
+function registerUser(user){
+    if(!user) throw new ValidationError("No User Present")
+
+}
+
+// try {
+//     registerUser()
+// } catch (error) {
+//     console.log(error.name)
+// }
+
+// console.log(null.toUpperCase())  //Type Error
+//  let arr = new Array(-1) //range Error
+ 
+//  console.log(arr)
+
+//rethrowing Error
+try{
+    registerUser()
+}catch(err){
+    if(err instanceof TypeError){ 
+        console.log("Ha")
+    }else{
+        throw err
+    }
+}
+
 
 
 
