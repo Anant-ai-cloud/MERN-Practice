@@ -302,17 +302,17 @@
 // console.log(error)  //error is object in itself
 // }
 
-class ValidationError extends Error {
-    constructor(message){
-        super(message)
-        this.name = message  //give specific name to Error because bydefault every error in javaScript have same name Error
-    }
-}
+// class ValidationError extends Error {
+//     constructor(message){
+//         super(message)
+        // this.name = message  //give specific name to Error because bydefault every error in javaScript have same name Error
+//     }
+// }
 
-function registerUser(user){
-    if(!user) throw new ValidationError("No User Present")
+// function registerUser(user){
+//     if(!user) throw new ValidationError("No User Present")
 
-}
+// }
 
 // try {
 //     registerUser()
@@ -326,16 +326,165 @@ function registerUser(user){
 //  console.log(arr)
 
 //rethrowing Error
-try{
-    registerUser()
-}catch(err){
-    if(err instanceof TypeError){ 
-        console.log("Ha")
-    }else{
-        throw err
+// try{
+//     registerUser()
+// }catch(err){
+//     if(err instanceof TypeError){ 
+//         console.log("Ha")
+//     }else{
+//         throw err
+//     }
+// }
+
+//ES6+ features
+
+//Destructuring
+// let [head, ...rest] = [ 1, 2, 3]
+// console.log(rest)
+
+// const name = "Anant"
+// const user = { name }
+
+//function factory
+
+// function factory(x){
+//     return function product(y){
+//         return x * y
+//     }
+// }
+
+// const double = new factory(4)
+// console.log(double(2))
+
+
+//IIFE
+
+// (function(){
+// console.log("This is IIFE function")
+// })()
+// function Hello(){
+//     console.log("This is normal function")
+
+// }
+// Hello()
+
+// a= 10
+// console.log(a)
+// var a = 10 //only declaration hoist not initialization
+
+// a= 10
+// console.log(a)
+// let a;
+// for (let i = 0; i < 3; i++) {
+//   setTimeout(() => console.log(i), 100);
+// }
+//closure controlling execution of the function
+// function once(fn){
+//     let called = false
+//     return function(){
+//         if(!called){
+//             called = true
+//             return fn()
+//         }
+//         console.log("Can't run two times")
+//     }
+// }
+// const init = once(()=> console.log("Run only once"))
+// init()
+// init()
+
+// let arr = [2,3]
+// console.log(Object.getPrototypeOf(arr)) //will give you prototype
+
+// function User(name, age) {
+//   this.name = name;
+//   this.age = age;
+// }
+
+// const u1 = new User("Anant", 22);
+
+// User.prototype.sayhi = function(){
+//     console.log("this function add with prototype")
+// }
+
+// u1.sayhi()
+
+//static methods
+// class User{
+    // #name
+    // constructor(name){
+    //     this.#name= name
+    // }
+    // get name(){
+    //     return this.#name
+    // }
+    // set name(name){
+    //     this.#name = name
+    // }
+//     static rao(){
+//         console.log("This is static method")
+//     }
+//     khao(){
+//         console.log("This is normal method")
+//     }
+// }
+
+// const u = new User("Vikram")
+// u.name = "Anant"
+// console.log(u.name)
+// const u = new User()
+// u.khao()
+// User.rao()
+
+//mixins
+
+// const obj1 = {
+//     eat(){
+//         console.log("I am eating")
+//     }
+
+// }
+
+// const obj2 = {
+//     walk(){
+//         console.log("I am walking")
+//     }
+    
+// }
+
+// const person = {...obj1, ...obj2}
+// person.eat()
+// person.walk() //mixins
+
+//composition
+function canEat(entity) {
+  return {
+    eat() {
+      console.log(`${entity.name} is eating`);
     }
+  };
 }
 
+function canWalk(entity) {
+  return {
+    walk() {
+      console.log(`${entity.name} is walking`);
+    }
+  };
+}
+
+function comp(name) {
+  const entity = { name };
+  return {
+    ...entity,
+    ...canEat(entity),
+    ...canWalk(entity)
+  };
+}
+
+const john = comp("John");
+john.eat(); 
+john.walk();  
 
 
 
